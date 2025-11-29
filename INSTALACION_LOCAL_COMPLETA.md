@@ -48,7 +48,7 @@ tesseract --version
 
 ---
 
-## 📦 INSTALACIÓN PASO A PASO
+##  INSTALACIÓN PASO A PASO
 
 ### PASO 1: Crear Base de Datos
 
@@ -160,7 +160,7 @@ python app.py
 
 ---
 
-## 🎯 PROBAR LA APLICACIÓN
+##  PROBAR LA APLICACIÓN
 
 ### 1. Abrir Swagger UI
 ```
@@ -181,37 +181,37 @@ curl -X POST http://localhost:5000/api/scan/start ^
 
 ---
 
-## 📊 LIBRERÍAS INCLUIDAS
+##  LIBRERÍAS INCLUIDAS
 
 ### OCR (Máxima Potencia):
-✅ **Tesseract** - 95-97% precisión  
-✅ **PaddleOCR** - 96-98% precisión (EL MEJOR para español)  
-✅ **EasyOCR** - 92-95% precisión  
+ **Tesseract** - 95-97% precisión  
+ **PaddleOCR** - 96-98% precisión (EL MEJOR para español)  
+ **EasyOCR** - 92-95% precisión  
 
 ### Procesamiento PDFs:
-✅ **PyMuPDF** - Extracción rápida  
-✅ **pdfplumber** - Tablas y texto nativo  
-✅ **Camelot** - Tablas estructuradas  
-✅ **pypdf** - Manipulación de PDFs  
+ **PyMuPDF** - Extracción rápida  
+ **pdfplumber** - Tablas y texto nativo  
+ **Camelot** - Tablas estructuradas  
+ **pypdf** - Manipulación de PDFs  
 
 ### Procesamiento Imágenes:
-✅ **OpenCV** - Procesamiento avanzado  
-✅ **Pillow** - Manipulación básica  
-✅ **scikit-image** - Algoritmos científicos  
+ **OpenCV** - Procesamiento avanzado  
+ **Pillow** - Manipulación básica  
+ **scikit-image** - Algoritmos científicos  
 
 ### Machine Learning:
-✅ **PyTorch** - Deep Learning  
-✅ **Transformers** - Modelos de lenguaje  
-✅ **TorchVision** - Visión computacional  
+ **PyTorch** - Deep Learning  
+ **Transformers** - Modelos de lenguaje  
+ **TorchVision** - Visión computacional  
 
 ### Big Data:
-✅ **Pandas** - Análisis estándar  
-✅ **Polars** - 100× más rápido que Pandas  
-✅ **NumPy** - Operaciones matriciales  
+ **Pandas** - Análisis estándar  
+ **Polars** - 100× más rápido que Pandas  
+ **NumPy** - Operaciones matriciales  
 
 ---
 
-## 🔧 CONFIGURACIÓN AVANZADA
+##  CONFIGURACIÓN AVANZADA
 
 ### Cambiar Puerto
 Editar `app.py`:
@@ -243,7 +243,7 @@ engine='all'
 
 ---
 
-## ⚠️ SOLUCIÓN DE PROBLEMAS
+##  SOLUCIÓN DE PROBLEMAS
 
 ### Error: "Tesseract not found"
 ```bash
@@ -284,7 +284,7 @@ pip install -r requirements.txt --force-reinstall
 
 ---
 
-## 📦 INSTALACIÓN POR PARTES (Si falla la completa)
+##  INSTALACIÓN POR PARTES (Si falla la completa)
 
 Si `pip install -r requirements.txt` falla por timeout o memoria:
 
@@ -391,3 +391,7 @@ pip show torch
 **Versión:** 1.0.0 COMPLETA  
 **Última actualización:** Noviembre 2024  
 **Con todas las librerías potentes** 🚀
+
+-----------
+docker images
+docker run -d --name pi_extractor_back-app pi_extractor_back-app:latest
