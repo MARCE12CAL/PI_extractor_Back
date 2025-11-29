@@ -40,15 +40,15 @@ def add_ml_fields():
         # Inicializar base de datos
         db.init_app(app)
         
-        print(f"✓ Conectando a: {db_config.SQLALCHEMY_DATABASE_URI.split('@')[1] if '@' in db_config.SQLALCHEMY_DATABASE_URI else 'base de datos'}")
+        print(f" Conectando a: {db_config.SQLALCHEMY_DATABASE_URI.split('@')[1] if '@' in db_config.SQLALCHEMY_DATABASE_URI else 'base de datos'}")
         
     except ImportError as e:
-        print(f"❌ Error al importar módulos: {e}")
+        print(f" Error al importar módulos: {e}")
         print("Asegúrate de ejecutar desde la raíz del proyecto:")
         print("  python -m db.migrations.add_ml_fields")
         return
     except Exception as e:
-        print(f"❌ Error al configurar la aplicación: {e}")
+        print(f" Error al configurar la aplicación: {e}")
         return
     
     with app.app_context():
@@ -71,10 +71,10 @@ def add_ml_fields():
             elif 'document_field' in table_names:
                 table_name = 'document_field'
             else:
-                print("❌ No se encontró la tabla document_field(s)")
+                print(" No se encontró la tabla document_field(s)")
                 return
             
-            print(f"✓ Usando tabla: {table_name}\n")
+            print(f" Usando tabla: {table_name}\n")
             
             campos_agregados = 0
             
@@ -101,17 +101,17 @@ def add_ml_fields():
                         db.session.rollback()
             
             if campos_agregados > 0:
-                print(f"\n✅ Migración completada exitosamente ({campos_agregados} campos agregados)")
+                print(f"\n Migración completada exitosamente ({campos_agregados} campos agregados)")
                 print("\nNuevos campos agregados:")
                 print("  - manually_corrected: Indica si fue corregido manualmente")
                 print("  - auto_corrected: Indica si fue corregido automáticamente")
                 print("  - correction_date: Fecha de la corrección")
                 print("  - correction_confidence: Confianza de la corrección")
             else:
-                print("\n✅ Todos los campos ya existían en la base de datos")
+                print("\n Todos los campos ya existían en la base de datos")
         
         except Exception as error:
-            print(f"\n❌ Error en migración: {str(error)}")
+            print(f"\n Error en migración: {str(error)}")
             db.session.rollback()
             import traceback
             traceback.print_exc()
@@ -140,10 +140,10 @@ def rollback_ml_fields():
         db.init_app(app)
         
     except ImportError as e:
-        print(f"❌ Error al importar módulos: {e}")
+        print(f" Error al importar módulos: {e}")
         return
     except Exception as e:
-        print(f"❌ Error al configurar la aplicación: {e}")
+        print(f" Error al configurar la aplicación: {e}")
         return
     
     with app.app_context():
