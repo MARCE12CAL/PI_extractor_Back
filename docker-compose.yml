@@ -1,8 +1,7 @@
-version: '3.8'
-
 services:
   db:
     image: postgres:15-alpine
+    container_name: pi-postgres
     restart: always
     environment:
       POSTGRES_USER: scanner_user
@@ -12,20 +11,37 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
-      - ./database_schema.sql:/docker-entrypoint-initdb.d/database_schema.sql
+    networks:
+      - pi-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U scanner_user -d document_scanner_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   app:
     build:
       context: .
       dockerfile: Dockerfile
-    volumes:
-      - .:/app
+    container_name: pi-backend
     ports:
-      - "5000:5000"
+      - "8080:5000"
     depends_on:
-      - db
+      db:
+        condition: service_healthy
     environment:
       DATABASE_URL: postgresql://scanner_user:scanner_pass@db:5432/document_scanner_db
+      FLASK_ENV: production
+    volumes:
+      - ./uploads:/app/uploads
+      - ./outputs:/app/outputs
+    networks:
+      - pi-network
+    restart: unless-stopped
+
+networks:
+  pi-network:
+    driver: bridge
 
 volumes:
   postgres_data:
